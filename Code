@@ -1,0 +1,22 @@
+
+import pandas as pd
+from sklearn.utils import resample
+
+df = pd.read_csv("student_results_bootstrap.csv")
+print(df)
+
+bootstrap_sample = resample(
+    df,
+    replace=True,
+    n_samples=len(df),
+    random_state=42
+)
+
+print("Bootstrap Sample:")
+print(bootstrap_sample)
+
+print("Original Dataset Size:", len(df))
+print("Bootstrap Sample Size:", len(bootstrap_sample))
+
+print("Unique Students in Bootstrap Sample:",
+      bootstrap_sample["Student"].nunique())
